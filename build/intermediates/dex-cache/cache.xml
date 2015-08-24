@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/eloy/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/eloy/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-cd318b4c6ba991c996b8182436327dcf4e627fb7.jar" />
+    </item>
+    <item
+        jar="/Users/eloy/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.1/support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="/Users/eloy/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.1-1e5b5a46fe9718aad1c617c5cdaf25fa911ecedf.jar" />
+    </item>
+    <item
+        jar="/Users/eloy/AndroidStudioProjects/PopularMovies/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="/Users/eloy/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/classes-8c253c68a1f002c0371d0d844dcb0511194a0c56.jar" />
+    </item>
+    <item
+        jar="/Users/eloy/AndroidStudioProjects/PopularMovies/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="/Users/eloy/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/classes-87c21b837b4a6ca3f1d862d5fb22db43cd1a62de.jar" />
+    </item>
+    <item
+        jar="/Users/eloy/AndroidStudioProjects/PopularMovies/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/libs/internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="/Users/eloy/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.1-ecf899ac50fa5173c381cbe076af04115be4a838.jar" />
+    </item>
+
+</items>
