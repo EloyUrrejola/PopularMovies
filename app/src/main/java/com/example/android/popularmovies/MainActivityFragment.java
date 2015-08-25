@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -33,6 +34,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.android.popularmovies.utils.Constants;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -40,8 +42,8 @@ import java.util.List;
 public class MainActivityFragment extends Fragment {
     // API KEY for themoviedb.org
     private final String MDB_APIKEY = "";
-    // URL path for movies at themoviedb.org
-    private final String URL_PATH = "http://image.tmdb.org/t/p/w342";
+
+    private List<Movie> movies;
 
     private MovieAdapter movieAdapter;
 
@@ -51,6 +53,7 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setHasOptionsMenu(true);
     }
 
@@ -60,7 +63,13 @@ public class MainActivityFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        List<Movie> movies = new ArrayList<>();
+        movies = new ArrayList<>();
+
+        if (savedInstanceState != null){
+            Log.i("kkk", "pasa");
+            //get back your data and populate the adapter
+            movies = (List<Movie>) savedInstanceState.get("MOVIES_KEY");
+        }
         movieAdapter = new MovieAdapter(getActivity(), movies);
 
         GridView gridView = (GridView) rootView.findViewById(R.id.gridview_movies);
@@ -79,6 +88,12 @@ public class MainActivityFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("MOVIES_KEY", (ArrayList<? extends Parcelable>) movies);
+    }
+
     private void updateMovies() {
         // Get order preferences
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -95,14 +110,10 @@ public class MainActivityFragment extends Fragment {
         updateMovies();
     }
 
-    private class MovieAdapter extends ArrayAdapter {
-        private Context mContext;
-        private List<Movie> movies = new ArrayList<>();
+    private class MovieAdapter extends ArrayAdapter<Movie> {
 
         public MovieAdapter(Context context, List<Movie> movies) {
             super(context, R.layout.grid_item_movies, movies);
-            this.mContext = context;
-            this.movies = movies;
         }
 
         @Override
@@ -111,14 +122,17 @@ public class MainActivityFragment extends Fragment {
             //if the view is null than inflate it otherwise just fill the list with
             if (convertView == null){
                 //inflate the layout
-                LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
-                convertView = inflater.inflate(R.layout.grid_item_movies, parent, false);
+                convertView = LayoutInflater.from(getActivity()).inflate(R.layout.grid_item_movies, parent, false);
             }
             ImageView imageView = (ImageView) convertView.findViewById(R.id.grid_item_movies_imageview);
 
-            // Load image from Picasso
-            String url = movies.get(position).posterPath;
-            Picasso.with(mContext).load(url).into(imageView);
+            String url = Constants.URL_PATH + movies.get(position).posterPath;
+
+            // Load image with Picasso
+            Picasso.with(getActivity())
+                    .load(url)
+                    .error(R.drawable.poster_default_w342)
+                    .into(imageView);
 
             return  convertView;
         }
@@ -233,7 +247,7 @@ public class MainActivityFragment extends Fragment {
                 // Get to movie poster and add it to the list
                 movie.id = movieJSON.getInt("id");
                 movie.originalTitle = movieJSON.getString("original_title");
-                movie.posterPath = URL_PATH + movieJSON.getString("poster_path");
+                movie.posterPath = movieJSON.getString("poster_path");
                 movie.overview = movieJSON.getString("overview");
                 movie.releaseDate = movieJSON.getString("release_date");
                 movie.voteAverage = movieJSON.getDouble("vote_average");

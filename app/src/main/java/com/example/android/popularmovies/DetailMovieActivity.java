@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-
+import com.example.android.popularmovies.utils.Constants;
 
 public class DetailMovieActivity extends ActionBarActivity {
 
@@ -74,7 +74,13 @@ public class DetailMovieActivity extends ActionBarActivity {
                         .setText(movie.originalTitle);
                 // poster
                 ImageView posterImage = (ImageView) rootView.findViewById(R.id.movie_image);
-                Picasso.with(getActivity()).load(movie.posterPath).into(posterImage);
+                String url = Constants.URL_PATH + movie.posterPath;
+                // Load image with Picasso
+                Picasso.with(getActivity())
+                        .load(url)
+                        .error(R.drawable.poster_default_w342)
+                        .into(posterImage);
+
                 // year
                 ((TextView) rootView.findViewById(R.id.movie_year))
                         .setText(movie.releaseDate.substring(0, 4));

@@ -13,6 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:stretchMode="columnWidth"
-        android:columnWidth="150dp"
+        android:columnWidth="160dp"
         android:numColumns="auto_fit"/>
 </FrameLayout>
