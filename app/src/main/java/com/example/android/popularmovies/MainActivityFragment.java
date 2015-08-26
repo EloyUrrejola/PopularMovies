@@ -69,6 +69,8 @@ public class MainActivityFragment extends Fragment {
             Log.i("kkk", "pasa");
             //get back your data and populate the adapter
             movies = (List<Movie>) savedInstanceState.get("MOVIES_KEY");
+        } else {
+            updateMovies();
         }
         movieAdapter = new MovieAdapter(getActivity(), movies);
 
@@ -106,8 +108,9 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onStart() {
         // update movies on start
+        Log.i("kkk", "onStart");
         super.onStart();
-        updateMovies();
+        //updateMovies();
     }
 
     private class MovieAdapter extends ArrayAdapter<Movie> {

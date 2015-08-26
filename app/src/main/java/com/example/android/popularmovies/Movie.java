@@ -18,12 +18,12 @@ public class Movie implements Parcelable {
     }
 
     public Movie(Parcel in) {
-        id = in.readInt();
-        originalTitle = in.readString();
-        posterPath = in.readString();
-        overview = in.readString();
-        releaseDate = in.readString();
-        voteAverage = in.readDouble();
+        this.id = in.readInt();
+        this.originalTitle = in.readString();
+        this.posterPath = in.readString();
+        this.overview = in.readString();
+        this.releaseDate = in.readString();
+        this.voteAverage = in.readDouble();
     }
 
     @Override
@@ -33,12 +33,12 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(originalTitle);
-        dest.writeString(posterPath);
-        dest.writeString(overview);
-        dest.writeString(releaseDate);
-        dest.writeDouble(voteAverage);
+        dest.writeInt(this.id);
+        dest.writeString(this.originalTitle);
+        dest.writeString(this.posterPath);
+        dest.writeString(this.overview);
+        dest.writeString(this.releaseDate);
+        dest.writeDouble(this.voteAverage);
     }
 
     public static final Parcelable.Creator<Movie> CREATOR
