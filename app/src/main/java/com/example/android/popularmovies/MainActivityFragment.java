@@ -153,7 +153,7 @@ public class MainActivityFragment extends Fragment {
             // Will contain the raw JSON response as a string.
             String moviesJsonStr = null;
 
-            List<Movie> movies = new ArrayList<>();
+            List<Movie> movieList = new ArrayList<>();
 
             try {
                 // Construct the URL for the themoviedb query
@@ -217,12 +217,12 @@ public class MainActivityFragment extends Fragment {
             ///////////////////////////////////////////////
 
             try {
-                movies = getMoviesFromJson(moviesJsonStr);
+                movieList = getMoviesFromJson(moviesJsonStr);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            return movies;
+            return movieList;
         }
 
         /**
